@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <nav className="bg-emerald-900">
-      <div className="flex justify-between py-4">
+      <div className="flex justify-between py-4 px-24">
         <div className="ml-12">
           <span className="text-3xl text-white font-bold">Foodie</span>
         </div>
