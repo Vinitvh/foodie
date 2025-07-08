@@ -1,21 +1,33 @@
-import image from "../assets/food.jpg";
 import star from "../assets/star.png";
+import { CDN_IMG } from "../utils/constants";
 
-const Card = () => {
+const Card = (props) => {
+  const { resData } = props;
+  const { name, cloudinaryImageId, locality, cuisines, avgRating, sla } =
+    resData?.card?.card?.info || {};
+  const minDeliveryTime = sla.deliveryTime - 5;
   return (
-    <div className="w-xs h-96 mb-10 hover:border-1 rounded">
+    <div className="w-xs mb-10 hover:border-1 rounded">
       <div className="p-1">
-        <img src={image} alt="food" />
+        <img
+          src={CDN_IMG + cloudinaryImageId}
+          alt={name}
+          className="w-xs h-48"
+        />
       </div>
-      <div className="p-2">
-        <h2 className="font-bold">Zozo Cafe</h2>
+      <div className="p-2 text-pretty">
+        <h2 className="font-bold">{name}</h2>
         <div className="flex align-middle justify-start">
           <img src={star} alt="rating" className="inline w-5 h-5 pr-1" />
-          <span className="font-bold">4.4</span>
+          <span className="font-bold">{avgRating}</span>
         </div>
-        <p className="font-bold">40-45 mins</p>
-        <p className="text-gray-700 font-medium">Fast Food, Pizzas,...</p>
-        <p className="text-gray-700 font-medium">Jayanagar</p>
+        <p className="font-bold">
+          {minDeliveryTime + "-" + sla.deliveryTime} mins
+        </p>
+        <p className="text-gray-700 text-sm font-medium text-wrap">
+          {cuisines.join(",")}
+        </p>
+        <p className="text-gray-800 font-medium">{locality}</p>
       </div>
     </div>
   );
