@@ -29,7 +29,7 @@ const CardsSection = () => {
           <input
             type="text"
             placeholder="Search for dishes and restuarants"
-            className="w-lg rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-900 sm:text-sm/6"
+            className="w-lg rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-600 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-900 sm:text-sm/6"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -49,7 +49,7 @@ const CardsSection = () => {
         </div>
         <h1 className="text-xl font-bold text-center">Restaurants</h1>
       </div>
-      <div className="mx-24">
+      <div className="mx-28 my-10">
         <button
           type="button"
           className="text-white bg-emerald-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 cursor-pointer"
