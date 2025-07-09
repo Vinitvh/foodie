@@ -20,7 +20,7 @@ const Card = (props) => {
           <img src={star} alt="rating" className="inline w-5 h-5 pr-1" />
           <span className="font-bold">{avgRating}</span>
         </div>
-        {/* <p className="font-bold">{sla.slaString}</p> */}
+        <p className="font-bold">{sla.slaString}</p>
         <p className="text-gray-700 text-sm font-medium break-words">
           {cuisines.join(",")}
         </p>

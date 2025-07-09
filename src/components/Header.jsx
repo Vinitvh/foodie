@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const Header = () => {
+  const [btnClick, setBtnClick] = useState("login");
+
   return (
     <nav className="bg-emerald-900">
       <div className="flex justify-between align-middle py-4 px-24">

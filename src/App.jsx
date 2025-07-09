@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Search />
+      {/* <Search /> */}
       <CardsSection />
       {/* <Login /> */}
     </>
