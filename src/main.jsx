@@ -5,6 +5,8 @@ import "./index.css";
 import App from "./App.jsx";
 import Login from "./components/Login.jsx";
 import CardsSection from "./components/CardsSection.jsx";
+import RestaurantMenu from "./components/RestaurantMenu.jsx";
+import ErrorElement from "./components/ErrorElement.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,10 +16,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <CardsSection />,
+        errorElement: <ErrorElement />,
       },
       {
         path: "/login",
         element: <Login />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <RestaurantMenu />,
+        errorElement: <ErrorElement />,
       },
     ],
   },
