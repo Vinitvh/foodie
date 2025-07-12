@@ -16,19 +16,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <CardsSection />,
-        errorElement: <ErrorElement />,
       },
       {
         path: "/login",
         element: <Login />,
-        errorElement: <ErrorElement />,
       },
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
-        errorElement: <ErrorElement />,
       },
     ],
+    errorElement: <ErrorElement />,
   },
 ]);
 
