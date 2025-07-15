@@ -1,8 +1,8 @@
-import Card from "./Card";
-import { API_URL } from "../utils/constants";
-import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../utils/constants";
+import Card from "./Card";
+import Shimmer from "./Shimmer";
 
 const CardsSection = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -16,8 +16,8 @@ const CardsSection = () => {
   const handleFetch = async () => {
     const res = await fetch(API_URL);
     const jsonData = await res.json();
-    setAllRestaurants(jsonData?.data?.cards?.slice(3));
-    setFilteredList(jsonData?.data?.cards?.slice(3));
+    setAllRestaurants(jsonData?.data?.cards?.slice(4));
+    setFilteredList(jsonData?.data?.cards?.slice(4));
   };
 
   return allRestaurants.length === 0 ? (
@@ -80,14 +80,11 @@ const CardsSection = () => {
             No restaurants found
           </p>
         ) : (
-          filteredList.map((item) => (
-            <Link
-              key={item?.card?.card?.info?.id}
-              to={"/restaurant/" + item?.card?.card?.info?.id}
-            >
-              <Card resData={item} />
-            </Link>
-          ))
+          filteredList.map((item) =>
+            item?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
+              (res) => <Card key={res?.info?.id} resData={res} />
+            )
+          )
         )}
       </div>
     </>

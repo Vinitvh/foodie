@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
   const { itemCards } =
     menu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
-  const itemLen = itemCards.length;
+  // const itemLen = itemCards.length;
 
   return (
     <div className="p-4 max-w-5xl mx-auto">
@@ -49,13 +49,10 @@ const RestaurantMenu = () => {
         </p>
         <p className="text-sm font-bold">{sla.slaString}</p>
       </div>
-
       {cards.map((cat) => (
         <div>
           <div className="mb-8">
-            <h2 className="text-md font-bold mb-4">
-              {cat?.card?.card?.title + "(" + itemLen + ")"}
-            </h2>
+            <h2 className="text-md font-bold mb-4">{cat?.card?.card?.title}</h2>
             {itemCards.map((item) => (
               <div className="flex justify-between items-center border p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 my-4">
                 <div>
@@ -96,6 +93,7 @@ const RestaurantMenu = () => {
           <span className="block w-full h-1 bg-gray-300 rounded my-4"></span>
         </div>
       ))}
+      )
     </div>
   );
 };
