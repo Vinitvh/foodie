@@ -1,18 +1,13 @@
 import star from "../assets/star.png";
 import { CDN_IMG } from "../utils/constants";
 
-const Card = (props) => {
-  const { resData } = props;
-
-  const { id, name, cloudinaryImageId, avgRating, cuisines, sla, locality } =
-    resData?.info;
+const Card = ({ resData }) => {
+  const { name, cloudinaryImageId, avgRating, cuisines, sla, locality } =
+    resData?.info || {};
 
   return (
     <>
-      <div
-        key={id}
-        className="w-72 h-[350px] mb-10 rounded shadow-sm border border-transparent transition-all duration-200 ease-in-out hover:scale-[1.03] hover:shadow-md hover:border-gray-300"
-      >
+      <div className="w-72 h-[350px] mb-10 rounded shadow-sm border border-transparent transition-all duration-200 ease-in-out hover:scale-[1.03] hover:shadow-md hover:border-gray-300">
         <div className="h-48 w-full p-1">
           <img
             src={CDN_IMG + cloudinaryImageId}

@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Login from "./components/Login.jsx";
-import CardsSection from "./components/CardsSection.jsx";
+import CardSection from "./components/CardSection.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import ErrorElement from "./components/ErrorElement.jsx";
 
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <CardsSection />,
+        element: <CardSection />,
       },
       {
         path: "/login",
