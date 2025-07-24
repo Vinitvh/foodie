@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { API_URL } from "../utils/constants";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
+import Banner from "./Banner";
 
 const CardSection = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
+  const [jsonData, setJsonData] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -30,10 +32,13 @@ const CardSection = () => {
     try {
       setIsLoading(true);
       const res = await fetch(API_URL);
-      const jsonData = await res.json();
+      const data = await res.json();
+
+      const bannerData = data?.data?.cards[0];
+      setJsonData(bannerData);
 
       // Flatten the restaurant data structure for easier handling
-      const restaurantData = jsonData?.data?.cards?.slice(4) || [];
+      const restaurantData = data?.data?.cards?.slice(4) || [];
       const flattenedRestaurants = restaurantData
         .map(
           (item) =>
@@ -83,7 +88,7 @@ const CardSection = () => {
 
   return (
     <>
-      <div className="my-16">
+      <div className="mt-16">
         {/* Search */}
         <div className="my-12 text-center">
           <div className="relative inline-block">
@@ -105,16 +110,21 @@ const CardSection = () => {
               </button>
             )}
           </div>
-          {searchText && (
+          {searchText ? (
             <p className="mt-2 text-sm text-gray-600">
               {filteredRestaurants.length} restaurant(s) found
             </p>
+          ) : (
+            <Banner data={jsonData} />
           )}
         </div>
-        <h1 className="text-xl font-bold text-center">Restaurants</h1>
+
+        <h1 className="text-xl font-bold mx-28">
+          Restaurants with online food delivery in Bangalore
+        </h1>
       </div>
 
-      <div className="mx-28 my-10">
+      <div className="mx-28 my-6">
         <button
           type="button"
           className="text-white bg-emerald-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 cursor-pointer hover:bg-emerald-500 transition-colors"
