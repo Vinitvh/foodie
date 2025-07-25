@@ -4,6 +4,7 @@ import { API_URL } from "../utils/constants";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 import Banner from "./Banner";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const CardSection = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -81,6 +82,15 @@ const CardSection = () => {
     setFilteredRestaurants(allRestaurants);
     setSearchText("");
   };
+
+  // Check internet connection
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus)
+    return (
+      <p className="text-2xl text-center font-bold my-20">
+        Oops! looks like your offline. Please check your Internet connection.
+      </p>
+    );
 
   if (isLoading) {
     return <Shimmer />;
